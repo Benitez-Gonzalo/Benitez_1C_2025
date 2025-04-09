@@ -1,3 +1,9 @@
+/*
+
+Función que convierte un dato de 32 bits a BCD.
+
+*/
+
 #include <stdio.h>
 #include <stdint.h>
 
