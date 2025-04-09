@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Guía 1, ejercicio 6.: Referencia del archivo C:/Repositorios/Benitez_1C_2025/firmware/projects/guia1_ej6/main/numToLCD.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Guía 1, ejercicio 6.<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Mostrar un número en un display de siete segmentos.</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('num_to_l_c_d_8c.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo numToLCD.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;C:\Repositorios\Benitez_1C_2025\firmware\projects\guia1_ej4\main\convertToBCDArray.c&quot;</code><br />
+<code>#include &quot;C:\Repositorios\Benitez_1C_2025\firmware\projects\guia1_ej5\main\GPIOchange.c&quot;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/task.h&quot;</code><br />
+<code>#include &quot;esp_rom_sys.h&quot;</code><br />
+</div>
+<p><a href="num_to_l_c_d_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:add259e4cffbc93b6432846affe4509a1" id="r_add259e4cffbc93b6432846affe4509a1"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add259e4cffbc93b6432846affe4509a1">numToLCD</a> (uint32_t data, uint8_t digitsNumber, gpioConf_t *<a class="el" href="guia1__ej6_8c.html#a224f01ef17ac38147c4ddfa1d37250ed">gpio_bcd</a>, gpioConf_t *<a class="el" href="guia1__ej6_8c.html#a9080037ff5ea82842e2a4bc6aecdc6c2">gpio_select</a>)</td></tr>
+<tr class="memdesc:add259e4cffbc93b6432846affe4509a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra un número en un display de 7 segmentos.  <br /></td></tr>
+<tr class="separator:add259e4cffbc93b6432846affe4509a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="add259e4cffbc93b6432846affe4509a1" name="add259e4cffbc93b6432846affe4509a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add259e4cffbc93b6432846affe4509a1">&#9670;&#160;</a></span>numToLCD()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t numToLCD </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>digitsNumber</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpioConf_t *</td>          <td class="paramname"><span class="paramname"><em>gpio_bcd</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpioConf_t *</td>          <td class="paramname"><span class="paramname"><em>gpio_select</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Muestra un número en un display de 7 segmentos. </p>
+<p>Esta función convierte un número de 32 bits en dígitos BCD y los muestra en un display de 7 segmentos de hasta 3 dígitos. Actualiza los dígitos de manera continua, enviando los datos BCD a través de un vector de GPIOs y seleccionando cada dígito mediante otro vector de GPIOs. Los datos se latchean en decodificadores CD4543 con un pulso de 50 ns en los pines de selección. Reutiliza funciones de ejercicios anteriores: una para convertir el número a BCD (<code>convertToBcdArray</code>) y otra para configurar los GPIOs según un dígito BCD (<code>setGPIOsFromBCD</code>).</p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Número de 32 bits a mostrar en el display (máximo 999) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">digitsNumber</td><td>Cantidad de dígitos a mostrar (máximo 3 según el hardware) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_bcd</td><td>Vector de estructuras gpioConf_t para los datos BCD (4 bits: GPIO_20 a GPIO_23) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gpio_select</td><td>Vector de estructuras gpioConf_t para la selección de dígitos (GPIO_19, GPIO_18, GPIO_9) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>int8_t 0 si la operación fue exitosa, -1 si hubo un error (parámetros inválidos o fallo en conversión BCD). El valor de retorno "0" nunca se alcanza debido al bucle infinito. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="num_to_l_c_d_8c_source.html#l00027">27</a> del archivo <a class="el" href="num_to_l_c_d_8c_source.html">numToLCD.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="guia1__ej6_8c_source.html#l00044">gpio_bcd</a>, <a class="el" href="guia1__ej6_8c_source.html#l00051">gpio_select</a>, <a class="el" href="gpio__mcu_8c_source.html#l00091">GPIOState()</a> y <a class="el" href="ili9341_8c_source.html#l00019">NULL</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="guia1__ej6_8c_source.html#l00059">app_main()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_429d80758da54da73083af4edd40d0b3.html">projects</a></li><li class="navelem"><a class="el" href="dir_6087f44eb67a0efba831021a37cbe529.html">guia1_ej6</a></li><li class="navelem"><a class="el" href="dir_86e6d4f15d6d23982e01ca56cf17d897.html">main</a></li><li class="navelem"><a class="el" href="num_to_l_c_d_8c.html">numToLCD.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>
