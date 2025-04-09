@@ -1,6 +1,6 @@
 /*
 
-Función para controlar el encendido y apagado de un LED según un switch case.
+Función para controlar el encendid, apagado y parpadeo de un LED según un switch case.
 
 */
 

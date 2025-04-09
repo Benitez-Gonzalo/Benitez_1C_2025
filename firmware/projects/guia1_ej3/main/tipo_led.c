@@ -1,6 +1,6 @@
 /*
 
-Estructura de tipo LED que define el tipo que será llamado por la función "control_led". El "mode" queda definido con la estructura y no es modificable.
+Estructura de tipo LED que define el tipo que será llamado por la función "controlLed". El "mode" queda definido con la estructura y no es modificable.
 
 */
 
