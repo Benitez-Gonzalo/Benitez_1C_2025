@@ -84,8 +84,8 @@ void app_main(void){
     };
     TimerInit(&timer_led_2);
     /* Creación de tareas */
-    xTaskCreate(&Led1Task, "LED_1", 512, NULL, 5, &led1_task_handle);
-    xTaskCreate(&Led2Task, "LED_2", 512, NULL, 5, &led2_task_handle);
+    xTaskCreate(&Led1Task, "LED_1", 2048, NULL, 5, &led1_task_handle);
+    xTaskCreate(&Led2Task, "LED_2", 2048, NULL, 5, &led2_task_handle);
     /* Inicialización del conteo de timers */
     TimerStart(timer_led_1.timer);
     TimerStart(timer_led_2.timer);
