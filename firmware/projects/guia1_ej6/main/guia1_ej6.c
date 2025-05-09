@@ -1,7 +1,7 @@
 /*! @mainpage Guia 1, ejercicio 6:
- *  Mostrar un número en un display de siete segmentos.
+ *  
  *
- * @section genDesc General Description
+ * @section Mostrar un número en un display de siete segmentos.
  *
  * El programa muestra un número de 32 bits en un display de 7 segmentos de hasta 3 dígitos,
  * utilizando multiplexación para actualizar los dígitos de manera continua. El programa inicializa
