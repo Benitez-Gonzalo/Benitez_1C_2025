@@ -41,6 +41,15 @@
         },
         {
             "path": "projects/guia2_act3"
+        },
+        {
+            "path": "projects/proyecto_final"
+        },
+        {
+            "path": "projects/guia2_act4"
+        },
+        {
+            "path": "projects/examen"
         }
     ],
     "settings": {
@@ -96,7 +105,14 @@
             "soc_caps.h": "c",
             "mpu6050.h": "c",
             "i2c_mcu.h": "c",
-            "rmt_tx.h": "c"
+            "rmt_tx.h": "c",
+            "adc.h": "c",
+            "esp_adc_cal.h": "c",
+            "stdio.h": "c",
+            "esp_mac.h": "c",
+            "esp_http_client.h": "c",
+            "telegram_bot_mcu.h": "c",
+            "io_context": "c"
         },
     },
     "tasks": {
