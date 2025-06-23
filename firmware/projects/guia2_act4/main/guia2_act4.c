@@ -58,20 +58,20 @@ const char ecg[BUFFER_SIZE] = {
     74, 67, 71, 78, 72, 67, 73, 81, 77, 71, 75, 84, 79, 77, 77, 76, 76,
 };
 uint16_t potValue = 0;
-TaskHandle_t readPotValues = NULL;
-TaskHandle_t sendECGValues = NULL;
+TaskHandle_t readValues = NULL;
+TaskHandle_t sendValues = NULL;
 uint8_t auxIndex = 0;
 /*==================[internal functions declaration]=========================*/
 
-void readPotentiometer(){
-	vTaskNotifyGiveFromISR(readPotValues,pdFALSE);
+void read(){
+	vTaskNotifyGiveFromISR(readValues,pdFALSE);
 }
 
-void sendECG(){
-	vTaskNotifyGiveFromISR(sendECGValues,pdFALSE);
+void send(){
+	vTaskNotifyGiveFromISR(sendValues,pdFALSE);
 }
 
-static void readPotValuesTask (void *pvParameter){
+static void readValuesTask (void *pvParameter){
 
 	while(true){
 		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
@@ -83,7 +83,7 @@ static void readPotValuesTask (void *pvParameter){
 
 }
 
-static void sendECGValuesTask (void *pvParameter){
+static void sendValuesTask (void *pvParameter){
 
 	while (true){
 		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
@@ -108,33 +108,33 @@ void app_main(void){
 	timer_config_t timer_for_reading = {
 		.timer = TIMER_A,
 		.period = CONFIG_READING_PERIOD,
-		.func_p = readPotentiometer,
+		.func_p = read,
 		.param_p = NULL,
 	};
 	TimerInit(&timer_for_reading);
 
-	timer_config_t timer_for_ECG = {
+	timer_config_t timer_for_sending = {
 		.timer = TIMER_B,
 		.period = CONFIG_ECG_PERIOD,
-		.func_p = sendECG,
+		.func_p = send,
 		.param_p = NULL,
 	};
-	TimerInit(&timer_for_ECG);
+	TimerInit(&timer_for_sending);
 
 	analog_input_config_t potInput = {
-	.input = CH1,		/*!< Inputs: CH0, CH1, CH2, CH3 */
-	.mode = ADC_SINGLE,	/*!< Mode: single read or continuous read */
-	.func_p = NULL,		/*!< Pointer to callback function for convertion end (only for continuous mode) */
-	.param_p = NULL,	/*!< Pointer to callback function parameters (only for continuous mode) */
-	.sample_frec = 0	/*!< Sample frequency min: 20kHz - max: 2MHz (only for continuous mode)  */
+		.input = CH1,		/*!< Inputs: CH0, CH1, CH2, CH3 */
+		.mode = ADC_SINGLE,	/*!< Mode: single read or continuous read */
+		.func_p = NULL,		/*!< Pointer to callback function for convertion end (only for continuous mode) */
+		.param_p = NULL,	/*!< Pointer to callback function parameters (only for continuous mode) */
+		.sample_frec = 0	/*!< Sample frequency min: 20kHz - max: 2MHz (only for continuous mode)  */
 	};
 	AnalogInputInit(&potInput);
 	
 	AnalogOutputInit();
-	xTaskCreate(&readPotValuesTask,"readPotValueTask",2048,NULL,5,&readPotValues);
-	xTaskCreate(&sendECGValuesTask,"sendECGValuesTask",2048,NULL,5,&sendECGValues);
-	TimerStart(timer_for_ECG.timer);
+	xTaskCreate(&readValuesTask,"readValueTask",2048,NULL,5,&readValues);
+	xTaskCreate(&sendValuesTask,"sendValuesTask",2048,NULL,5,&sendValues);
 	TimerStart(timer_for_reading.timer);
+	TimerStart(timer_for_sending.timer);
 
 }
 /*==================[end of file]============================================*/

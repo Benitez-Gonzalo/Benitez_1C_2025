@@ -11,6 +11,7 @@ set(srcs
     "microcontroller/src/i2c_mcu.c"
     "microcontroller/src/gpio_fast_out_mcu.c"
     "microcontroller/src/analog_io_mcu.c"
+    "microcontroller/src/telegram_bot_mcu.c"
     #"microcontroller/src/ble_mcu.c"
     #"microcontroller/src/ble_hid_mcu.c"
     "microcontroller/src/rtc_mcu.c"
@@ -36,4 +37,4 @@ set(includes "microcontroller/inc"
 
 idf_component_register(SRCS ${srcs}
                        INCLUDE_DIRS ${includes}
-                       REQUIRES driver esp_adc nvs_flash bt)
+                       REQUIRES driver esp_adc nvs_flash bt esp_http_client)
