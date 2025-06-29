@@ -60,14 +60,20 @@
 /*==================[internal data definition]===============================*/
 TaskHandle_t measuringHardnessTask = NULL;
 TaskHandle_t telegramMessageTask = NULL;
-uint16_t voltage = 0;
-uint32_t resistance = 0;
 uint16_t adc_raw = 0;
 float v_adc = 0;
 float r_water = 0;
 float conductivity = 0;
 float water_hardness = 0;
+/**
+ * @def buffer
+ * @brief Variable que almacena el mensaje de Telegram
+ */
 char buffer[100];
+/**
+ * @def _binary_telegram_cert_pem_start
+ * @brief Certificado de Telegram
+ */
 extern const uint8_t _binary_telegram_cert_pem_start[];
 static uint8_t led_state = 255; // Inicialmente inválido
 /*==================[internal functions declaration]=========================*/
