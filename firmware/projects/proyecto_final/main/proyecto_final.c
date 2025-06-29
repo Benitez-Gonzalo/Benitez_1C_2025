@@ -66,12 +66,12 @@ float r_water = 0;
 float conductivity = 0;
 float water_hardness = 0;
 /**
- * @def buffer
+ * @var char buffer[100]
  * @brief Variable que almacena el mensaje de Telegram
  */
 char buffer[100];
 /**
- * @def _binary_telegram_cert_pem_start
+ * @var extern const uint8_t _binary_telegram_cert_pem_start[]
  * @brief Certificado de Telegram
  */
 extern const uint8_t _binary_telegram_cert_pem_start[];

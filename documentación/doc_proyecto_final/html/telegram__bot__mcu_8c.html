@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto Final - E. Prog.: Referencia del archivo C:/Repositorios/Benitez_1C_2025/firmware/drivers/microcontroller/src/telegram_bot_mcu.c</title>
+<link rel="icon" href="icon.ico" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="fiuner.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Proyecto Final - E. Prog.<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Medidor de dureza de agua.</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('telegram__bot__mcu_8c.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">defines</a> &#124;
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Referencia del archivo telegram_bot_mcu.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="telegram__bot__mcu_8h_source.html">telegram_bot_mcu.h</a>&quot;</code><br />
+<code>#include &quot;esp_log.h&quot;</code><br />
+<code>#include &quot;esp_wifi.h&quot;</code><br />
+<code>#include &quot;esp_event.h&quot;</code><br />
+<code>#include &quot;nvs_flash.h&quot;</code><br />
+<code>#include &quot;esp_http_client.h&quot;</code><br />
+<code>#include &quot;esp_netif.h&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div>
+<p><a href="telegram__bot__mcu_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+defines</h2></td></tr>
+<tr class="memitem:a62de35f73ccf569a768656c963389ecc" id="r_a62de35f73ccf569a768656c963389ecc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62de35f73ccf569a768656c963389ecc">WIFI_MAXIMUM_RETRY</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a62de35f73ccf569a768656c963389ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:ac31e38637f7a5e5c8ce4d033b0955fec" id="r_ac31e38637f7a5e5c8ce4d033b0955fec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac31e38637f7a5e5c8ce4d033b0955fec">wifi_event_handler</a> (void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)</td></tr>
+<tr class="separator:ac31e38637f7a5e5c8ce4d033b0955fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3d2e60c9a46fb201c096ec195057f2e" id="r_ab3d2e60c9a46fb201c096ec195057f2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3d2e60c9a46fb201c096ec195057f2e">WifiInit</a> (const char *ssid, const char *password)</td></tr>
+<tr class="memdesc:ab3d2e60c9a46fb201c096ec195057f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa la conexión Wi-Fi.  <br /></td></tr>
+<tr class="separator:ab3d2e60c9a46fb201c096ec195057f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2382f1cd3f1810f03460abeb636ab84" id="r_ac2382f1cd3f1810f03460abeb636ab84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2382f1cd3f1810f03460abeb636ab84">TelegramSendMessage</a> (const char *token, const char *chat_id, const char *message, const char *cert_pem)</td></tr>
+<tr class="memdesc:ac2382f1cd3f1810f03460abeb636ab84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envía un mensaje al bot de Telegram.  <br /></td></tr>
+<tr class="separator:ac2382f1cd3f1810f03460abeb636ab84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;TelegramBot&quot;</td></tr>
+<tr class="separator:a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4da33fdcdaa6688ed25dab508ed5592" id="r_ae4da33fdcdaa6688ed25dab508ed5592"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4da33fdcdaa6688ed25dab508ed5592">s_retry_num</a> = 0</td></tr>
+<tr class="separator:ae4da33fdcdaa6688ed25dab508ed5592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de «define»</h2>
+<a id="a62de35f73ccf569a768656c963389ecc" name="a62de35f73ccf569a768656c963389ecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62de35f73ccf569a768656c963389ecc">&#9670;&#160;</a></span>WIFI_MAXIMUM_RETRY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WIFI_MAXIMUM_RETRY&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="telegram__bot__mcu_8c_source.html#l00010">10</a> del archivo <a class="el" href="telegram__bot__mcu_8c_source.html">telegram_bot_mcu.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="telegram__bot__mcu_8c_source.html#l00014">wifi_event_handler()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones</h2>
+<a id="ac2382f1cd3f1810f03460abeb636ab84" name="ac2382f1cd3f1810f03460abeb636ab84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2382f1cd3f1810f03460abeb636ab84">&#9670;&#160;</a></span>TelegramSendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TelegramSendMessage </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>token</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>chat_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>cert_pem</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envía un mensaje al bot de Telegram. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">token</td><td>Token del bot </td></tr>
+    <tr><td class="paramname">chat_id</td><td>ID del chat al que enviar el mensaje </td></tr>
+    <tr><td class="paramname">message</td><td>Texto a enviar </td></tr>
+    <tr><td class="paramname">cert_pem</td><td>Certificado .pem </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si el mensaje fue enviado correctamente, false en caso de error </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="telegram__bot__mcu_8c_source.html#l00068">68</a> del archivo <a class="el" href="telegram__bot__mcu_8c_source.html">telegram_bot_mcu.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="ble__hid__mcu_8c_source.html#l00031">TAG</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="proyecto__final_8c_source.html#l00092">telegramMessageFunction()</a>.</p>
+
+</div>
+</div>
+<a id="ac31e38637f7a5e5c8ce4d033b0955fec" name="ac31e38637f7a5e5c8ce4d033b0955fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac31e38637f7a5e5c8ce4d033b0955fec">&#9670;&#160;</a></span>wifi_event_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void wifi_event_handler </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">esp_event_base_t</td>          <td class="paramname"><span class="paramname"><em>event_base</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t</td>          <td class="paramname"><span class="paramname"><em>event_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>event_data</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="telegram__bot__mcu_8c_source.html#l00014">14</a> del archivo <a class="el" href="telegram__bot__mcu_8c_source.html">telegram_bot_mcu.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="telegram__bot__mcu_8c_source.html#l00012">s_retry_num</a>, <a class="el" href="ble__hid__mcu_8c_source.html#l00031">TAG</a> y <a class="el" href="telegram__bot__mcu_8c_source.html#l00010">WIFI_MAXIMUM_RETRY</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="telegram__bot__mcu_8c_source.html#l00032">WifiInit()</a>.</p>
+
+</div>
+</div>
+<a id="ab3d2e60c9a46fb201c096ec195057f2e" name="ab3d2e60c9a46fb201c096ec195057f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3d2e60c9a46fb201c096ec195057f2e">&#9670;&#160;</a></span>WifiInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool WifiInit </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>ssid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>password</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa la conexión Wi-Fi. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ssid</td><td>Nombre de la red Wi-Fi </td></tr>
+    <tr><td class="paramname">password</td><td>Contraseña de la red Wi-Fi </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>true si se conecta correctamente, false en caso contrario </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="telegram__bot__mcu_8c_source.html#l00032">32</a> del archivo <a class="el" href="telegram__bot__mcu_8c_source.html">telegram_bot_mcu.c</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="i2c__mcu_8c_source.html#l00024">ESP_ERROR_CHECK</a>, <a class="el" href="ili9341_8c_source.html#l00019">NULL</a>, <a class="el" href="ble__hid__mcu_8c_source.html#l00031">TAG</a> y <a class="el" href="telegram__bot__mcu_8c_source.html#l00014">wifi_event_handler()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="proyecto__final_8c_source.html#l00137">app_main()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de variables</h2>
+<a id="ae4da33fdcdaa6688ed25dab508ed5592" name="ae4da33fdcdaa6688ed25dab508ed5592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4da33fdcdaa6688ed25dab508ed5592">&#9670;&#160;</a></span>s_retry_num</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int s_retry_num = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="telegram__bot__mcu_8c_source.html#l00012">12</a> del archivo <a class="el" href="telegram__bot__mcu_8c_source.html">telegram_bot_mcu.c</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="telegram__bot__mcu_8c_source.html#l00014">wifi_event_handler()</a>.</p>
+
+</div>
+</div>
+<a id="a5a85b9c772bbeb480b209a3e6ea92b4c" name="a5a85b9c772bbeb480b209a3e6ea92b4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a85b9c772bbeb480b209a3e6ea92b4c">&#9670;&#160;</a></span>TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* TAG = &quot;TelegramBot&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="telegram__bot__mcu_8c_source.html#l00011">11</a> del archivo <a class="el" href="telegram__bot__mcu_8c_source.html">telegram_bot_mcu.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d9edf6c004b4a7ff14fe9ae7a92214ee.html">firmware</a></li><li class="navelem"><a class="el" href="dir_4774754e228843183aac8de48667fdde.html">drivers</a></li><li class="navelem"><a class="el" href="dir_d160f35dc52f3817b5a745af8a8d0f15.html">microcontroller</a></li><li class="navelem"><a class="el" href="dir_38cdc4999cf52a062657331cc3e157fe.html">src</a></li><li class="navelem"><a class="el" href="telegram__bot__mcu_8c.html">telegram_bot_mcu.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

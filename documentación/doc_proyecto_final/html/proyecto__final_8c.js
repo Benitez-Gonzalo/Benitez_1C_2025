@@ -1,0 +1,27 @@
+var proyecto__final_8c =
+[
+    [ "BOT_TOKEN", "proyecto__final_8c.html#a46ae855efe2974950d236ddeb7a7118a", null ],
+    [ "CHAT_ID", "proyecto__final_8c.html#a46cd8d05b33c73963e3dd6634cbef62e", null ],
+    [ "CONFIG_MEASURE_PERIOD", "proyecto__final_8c.html#a9a265a2fa8b8a1442be25098dec84dac", null ],
+    [ "CONFIG_TELEGRAM_PERIOD", "proyecto__final_8c.html#a8b1d85024f403b730934615beeeb670a", null ],
+    [ "CONVERSION_FACTOR", "proyecto__final_8c.html#a63a75c27912b5c6fd42e3682e252cbc0", null ],
+    [ "R1", "proyecto__final_8c.html#a918f64eb53db8e8dc694f36a87646476", null ],
+    [ "UMBRAL", "proyecto__final_8c.html#a389141dd4b5e45c17aaa48bcfb7c44a3", null ],
+    [ "WIFI_PASS", "proyecto__final_8c.html#a3c95561b03d0fcf9048b231ae2ba90fb", null ],
+    [ "WIFI_SSID", "proyecto__final_8c.html#a586542b79d00e4db7e1d5a667ae83a2b", null ],
+    [ "app_main", "proyecto__final_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70", null ],
+    [ "measuringHardnessCallBack", "proyecto__final_8c.html#a54630ab2d14ffe14b7822f5ae0aaefc8", null ],
+    [ "measuringHardnessFunction", "proyecto__final_8c.html#a50e3ff5e5c87a2b74f394788f919691d", null ],
+    [ "telegramMessageCallBack", "proyecto__final_8c.html#ab88edee69b75fcfccfa9b190fa7c8c36", null ],
+    [ "telegramMessageFunction", "proyecto__final_8c.html#a6b402e81a667e265f805e3a267e3998a", null ],
+    [ "_binary_telegram_cert_pem_start", "proyecto__final_8c.html#ac59be187d35e3ede386da8f8bdfbfc28", null ],
+    [ "adc_raw", "proyecto__final_8c.html#a97ba202d1a655f123fcc9a2092c8887b", null ],
+    [ "buffer", "proyecto__final_8c.html#a542df3d5bbe8c96a672476931ec18220", null ],
+    [ "conductivity", "proyecto__final_8c.html#aa6393e463b3a2936a0bcecd122820671", null ],
+    [ "led_state", "proyecto__final_8c.html#ac523471a8c7c7d10b8622f5bc16068bd", null ],
+    [ "measuringHardnessTask", "proyecto__final_8c.html#a10b354ed624b88314f3a23cdcb43b8ce", null ],
+    [ "r_water", "proyecto__final_8c.html#afa52bcfb03b5250f18c93749f49a62ca", null ],
+    [ "telegramMessageTask", "proyecto__final_8c.html#a81459a6e3a2a493e275c483ef59bb3c3", null ],
+    [ "v_adc", "proyecto__final_8c.html#ab1efc1c88012ae5b7f78a272c348f97d", null ],
+    [ "water_hardness", "proyecto__final_8c.html#a4e85915c562ffa2dbd96fb043be2dc5c", null ]
+];
