@@ -45,14 +45,15 @@
 #include "analog_io_mcu.h"
 #include "uart_mcu.h"
 #include "telegram_bot_mcu.h"
+#include "wifi_mcu.h"
 #include "led.h"
 #include "pwm_mcu.h"
 /*==================[macros and definitions]=================================*/
 #define R1  10000.0 // Ohm (resistencia conocida)
 #define CONFIG_MEASURE_PERIOD 1000000
 #define CONFIG_TELEGRAM_PERIOD 3000000
-#define WIFI_SSID "moto-e(7)-Gonza"
-#define WIFI_PASS "gonza235"
+#define WIFI_SSID "Quimicas"
+#define WIFI_PASS "QcaFCA2*18"
 #define BOT_TOKEN "7666661023:AAGC_aNd2ElAc5ieqiJxhCb8IVP74LCZG1o"
 #define CHAT_ID "7725635002" 
 #define UMBRAL 10 //Umbral de dureza en mg/L
@@ -92,8 +93,8 @@ void telegramMessageCallBack (void){
 static void telegramMessageFunction(void *pvParameter) {
     while (true) {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-
-        snprintf(buffer, sizeof(buffer),"Dureza (CaCO3)  = %.0f mg/L\n", water_hardness);
+ 
+        snprintf(buffer, sizeof(buffer),"Conductividad  = %.0f µS/cm\n",conductivity );
 
         TelegramSendMessage(BOT_TOKEN, CHAT_ID, buffer, (const char *)_binary_telegram_cert_pem_start);
         UartSendString(UART_PC, "Mensaje enviado al bot de Telegram\n");
@@ -115,7 +116,7 @@ static void measuringHardnessFunction(void *pvParameter){
         // Calcular si se está en un voltaje válido
         if (v_adc < 3.3) {
             r_water = ((v_adc * R1) / (3.3 - v_adc))*2.83; //2,83 es el valor de calibración. Se obtuvo experimentalmente.
-            conductivity = (2.27 / r_water) * 1000000; // Convertir a µS/cm. Constante de celda: 2,27 [1/cm]
+            conductivity = ((0.384 / r_water) * 1000000)/2500; // Convertir a µS/cm. Constante de celda: 2,27 [1/cm]
             water_hardness = CONVERSION_FACTOR*conductivity;
 
             uint8_t new_led_state = (water_hardness > UMBRAL) ? 1 : 0;
