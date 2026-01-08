@@ -32,6 +32,7 @@
  * | 18/06/2025 | The flash partition size was increased         |
  * | 21/06/2025 | PWM was used to impedance measurements         |
  * | 22/06/2025 | LED driving was implemented                    |
+ * | 08/01/2026 | Queue implementation to send the data to Tele. |
  *
  * @author Gonzalo Benitez (gonzalo.benitez@ingenieria.uner.edu.ar)
  *
@@ -52,31 +53,42 @@
 #define R1  10000.0 // Ohm (resistencia conocida)
 #define CONFIG_MEASURE_PERIOD 1000000
 #define CONFIG_TELEGRAM_PERIOD 3000000
-#define WIFI_SSID "Quimicas"
-#define WIFI_PASS "QcaFCA2*18"
+#define WIFI_SSID "Bety 710"
+#define WIFI_PASS "1054200812"
 #define BOT_TOKEN "7666661023:AAGC_aNd2ElAc5ieqiJxhCb8IVP74LCZG1o"
 #define CHAT_ID "7725635002" 
 #define UMBRAL 10 //Umbral de dureza en mg/L
 #define CONVERSION_FACTOR 0.145
+#define QUEUE_LENGTH 10
+#define QUEUE_SIZE sizeof(float)
 /*==================[internal data definition]===============================*/
 TaskHandle_t measuringHardnessTask = NULL;
 TaskHandle_t telegramMessageTask = NULL;
+QueueHandle_t queue = NULL;
+BaseType_t xReturn;
 uint16_t adc_raw = 0;
 float v_adc = 0;
 float r_water = 0;
 float conductivity = 0;
 float water_hardness = 0;
+float receiver = 0;
 /**
  * @var char buffer[100]
  * @brief Variable que almacena el mensaje de Telegram
  */
 char buffer[100];
+
 /**
  * @var extern const uint8_t _binary_telegram_cert_pem_start[]
  * @brief Certificado de Telegram
  */
 extern const uint8_t _binary_telegram_cert_pem_start[];
 static uint8_t led_state = 255; // Inicialmente inválido
+
+float sum = 0;
+int count = 0;
+float val_temp = 0;
+
 /*==================[internal functions declaration]=========================*/
 
 void measuringHardnessCallBack (void){
@@ -88,25 +100,14 @@ void telegramMessageCallBack (void){
 }
 
 /**
- * @brief Tarea encargada de enviar el mensaje vía Telegram
-*/
-static void telegramMessageFunction(void *pvParameter) {
-    while (true) {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
- 
-        snprintf(buffer, sizeof(buffer),"Conductividad  = %.0f µS/cm\n",conductivity );
-
-        TelegramSendMessage(BOT_TOKEN, CHAT_ID, buffer, (const char *)_binary_telegram_cert_pem_start);
-        UartSendString(UART_PC, "Mensaje enviado al bot de Telegram\n");
-    }
-}
-
-/**
 * @brief Tarea encargada de la medición de la dureza
 */
 static void measuringHardnessFunction(void *pvParameter){
     while (true) {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+        
+
         // Leer valor del ADC
         AnalogInputReadSingle(CH0, &adc_raw);
 
@@ -119,6 +120,14 @@ static void measuringHardnessFunction(void *pvParameter){
             conductivity = ((0.384 / r_water) * 1000000)/2500; // Convertir a µS/cm. Constante de celda: 2,27 [1/cm]
             water_hardness = CONVERSION_FACTOR*conductivity;
 
+            //Bloque para enviar el dato de la dureza a través de un queue
+            xReturn = xQueueSend(queue,&water_hardness,10);
+            if(xReturn == pdTRUE){
+                printf("Item Send: %.0f\n",water_hardness);
+            }else{
+                printf("Item Send False \n");
+            }
+
             uint8_t new_led_state = (water_hardness > UMBRAL) ? 1 : 0;
 
             if (new_led_state != led_state) {
@@ -130,9 +139,51 @@ static void measuringHardnessFunction(void *pvParameter){
                 led_state = new_led_state;
             }
         }
-        UartSendString(UART_PC, buffer);
+        //UartSendString(UART_PC, buffer); // Aquí puede ocurrir algo que sirve como ejemplo de un problema crítico. Si el timer le indica a esta tarea que debe ejecutarse sin que el buffer
+                                         // se haya llenado por la tarea de Telegram, aparecerá un mensaje incompleto (una variable corrupta). Para evitar esto, debemos usar MutEx, que pone en pausa
+                                         // a esta tarea hasta que la otra haya terminado; las instrucciones que usamos para esto son: xSemaphoreCreateMutex(), xSemaphoreTake(handle, tiempo_espera) y 
+                                         // xSemaphoreGive(handle).
+                                         // Yendo a un escenario hipotético, puede ocurrir que por un error de programación la tarea de Telegram quede bloqueada en un bucle infinito, por lo que
+                                         // la tarea medición quedará bloqueada permanentemente si es que el tiempo de espera de la instrucción xSemaphoreTake es infinito, esto es otro error crítico
+                                         // llamado inanición (starvation). En este caso, para corregir eso debemos poner un tiempo que consideremos correcto esperar hasta que la tarea intente volver
+                                         // a acceder a la variable.  
     }
 }
+
+/**
+ * @brief Tarea encargada de enviar el mensaje vía Telegram
+*/
+static void telegramMessageFunction(void *pvParameter) {
+    while (true) {
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+        sum = 0;
+        count = 0;
+
+        // Bucle: Mientras haya cosas en la cola, sácalas todas
+        while (xQueueReceive(queue, &val_temp, 0) == pdTRUE) {
+            printf("Item Receive: %.0f\n", val_temp);
+            sum += val_temp;
+            count++;
+        }
+
+        // Si sacamos al menos un dato, calculamos y enviamos
+        if (count > 0) {
+            receiver = sum / count; // Promedio de los últimos 3 segundos
+            
+            snprintf(buffer, sizeof(buffer),"Conductividad  = %.0f µS/cm\n",receiver);
+
+            TelegramSendMessage(BOT_TOKEN, CHAT_ID, buffer, (const char *)_binary_telegram_cert_pem_start);
+            UartSendString(UART_PC, "Mensaje enviado al bot de Telegram\n");
+        }
+        else {
+            // Saber si el Timer disparó pero la cola estaba vacía
+            printf("Advertencia: No se recibieron datos en la cola para este ciclo.\n");
+        }
+    }
+}
+
+
 
 /*==================[external functions definition]==========================*/
 void app_main(void) {
@@ -178,6 +229,13 @@ void app_main(void) {
     PWMInit(PWM_0, GPIO_9, 1000);     
     PWMSetDutyCycle(PWM_0, 50);
     PWMOn(PWM_0);
+
+    queue = xQueueCreate(QUEUE_LENGTH,QUEUE_SIZE);
+
+    if (queue == NULL) {
+        printf("Error creando la cola\n");
+        while(1); // Detener ejecución si no hay memoria
+    }
 
     xTaskCreate(&measuringHardnessFunction,"measuringHardnessFunction",2048,NULL,5,&measuringHardnessTask);
     xTaskCreate(&telegramMessageFunction,"telegramMessageFunction",4096,NULL,5,&telegramMessageTask);

@@ -12,6 +12,7 @@ set(srcs
     "microcontroller/src/gpio_fast_out_mcu.c"
     "microcontroller/src/analog_io_mcu.c"
     "microcontroller/src/telegram_bot_mcu.c"
+    "microcontroller/src/wifi_mcu.c"
     #"microcontroller/src/ble_mcu.c"
     #"microcontroller/src/ble_hid_mcu.c"
     "microcontroller/src/rtc_mcu.c"

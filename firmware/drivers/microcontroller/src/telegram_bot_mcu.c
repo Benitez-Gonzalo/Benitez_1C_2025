@@ -7,6 +7,8 @@
 #include "esp_netif.h"
 #include <string.h>
 
+static const char *TAG = "TelegramBot";
+
 bool TelegramSendMessage(const char *token, const char *chat_id, const char *message, const char *cert_pem) {
     char url[512];
     snprintf(url, sizeof(url), "https://api.telegram.org/bot%s/sendMessage", token);
